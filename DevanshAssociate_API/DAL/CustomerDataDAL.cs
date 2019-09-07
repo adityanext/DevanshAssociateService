@@ -29,6 +29,21 @@ namespace DevanshAssociate_API.DAL
 
         }
 
+        public List<CustomerData> getAllCustomerDataWithoutProcessStep()
+        {
+            string response = JsonConvert.SerializeObject(null);
+
+            MySqlDataReader dr = CallcustomerDetail_USP(response, OperationType.GET);
+
+            List<CustomerData> customersData = new List<CustomerData>();
+            while (dr.Read())
+            {
+                CustomerData customerData = ConvertDataReaderIntoModel(dr);
+                customersData.Add(customerData);
+            }
+            dr.Close();
+            return customersData;
+        }
         public CustomerData getCustomerDataById(CustomerData id)
         {
             string response = JsonConvert.SerializeObject(id);
@@ -92,6 +107,20 @@ namespace DevanshAssociate_API.DAL
             return response;
 
         }
+
+        public string updateCustormerProcessStep(CustomerData customerData){
+            string request = JsonConvert.SerializeObject(customerData);
+            string response = "";
+            MySqlDataReader dr = CallcustomerDetail_USP(request, OperationType.PROCESSSTEP);
+
+
+            while (dr.Read())
+            {
+                response = Convert.ToString(dr["_errorOutput"]);
+            }
+            dr.Close();
+            return response;
+        }                                                                           
 
         /**
         * This method calls the procedure to perform all operation on basis of OperationType.
@@ -192,8 +221,9 @@ namespace DevanshAssociate_API.DAL
             obj.customerId = Convert.ToInt32(dr["CustomerId"]);
             obj.customerName = Convert.ToString(dr["CustomerName"]);
             obj.buisnessName = Convert.ToString(dr["BuisnessName"]);
-            obj.loanType = Convert.ToInt32(dr["LoanType"]);
+            obj.loan = Convert.ToInt32(dr["LoanType"]);
             obj.buisnessAddress = Convert.ToString(dr["BuisnessAddress"]);
+            obj.processStep = Convert.ToInt32(dr["ProcessStep"]);
             obj.buisnessName = Convert.ToString(dr["BuisnessName"]);
             obj.permanentAddress = Convert.ToString(dr["PermanentAddress"]);
             obj.primaryContactNumber = Convert.ToString(dr["PrimaryContactNumber"]);
@@ -207,7 +237,7 @@ namespace DevanshAssociate_API.DAL
             obj.currentAccountingAndSavingAccount = Convert.ToString(dr["CurrentAccountingAndSavingAccount"]);
             obj.loanDetails = Convert.ToString(dr["LoanDetails"]);
             obj.bankName = Convert.ToString(dr["BankName"]);
-            obj.eMI = Convert.ToInt32(dr["EMI"]);
+            obj.otherLoanEmi = Convert.ToInt32(dr["EMI"]);
             obj.buisnessProofAnyRegistration = Convert.ToString(dr["BuisnessProofAnyRegistration"]);
             obj.propertyValuation = Convert.ToString(dr["PropertyValuation"]);
             obj.refrenceOne = Convert.ToString(dr["RefrenceOne"]);

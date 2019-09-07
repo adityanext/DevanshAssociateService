@@ -9,5 +9,7 @@ namespace DevanshAssociate_API.Services
     interface IEmpDataService
     {
         List<EmpData> getAllEmpData();
+
+        string addEmpData(EmpData emp);
     }
 }

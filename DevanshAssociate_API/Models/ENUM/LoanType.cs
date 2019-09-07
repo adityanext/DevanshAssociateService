@@ -45,5 +45,6 @@ namespace DevanshAssociate_API.Models.ENUM
         UPDATE = 3,
         DELETE = 4,
         GET = 5,
+        PROCESSSTEP = 6,
     }
 }

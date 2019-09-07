@@ -10,6 +10,8 @@ namespace DevanshAssociate_API.Services
     {
         List<CustomerData> getAllCustomerData(CustomerData request);
 
+        List<CustomerData> getAllWithoutProcessStep();
+
         CustomerData getCustomerDataById(CustomerData id);
 
         List<CustomerData> getCustomerReferenceDataById(CustomerData id);
@@ -17,5 +19,7 @@ namespace DevanshAssociate_API.Services
         string postCustomerData(CustomerData request);
 
         string postCustomerReferenceData(CustomerData request);
+
+        string updateCustormerProcessStepData(CustomerData request);
     }
 }

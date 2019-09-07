@@ -31,6 +31,22 @@ namespace DevanshAssociate_API.DAL
 
         }
 
+
+        public string addEmpData(EmpData emp)
+        {
+            string request = JsonConvert.SerializeObject(emp);
+            string response = "";
+
+            MySqlDataReader dr = CallEmpDetail_USP(request, OperationType.SAVE);
+            
+            while (dr.Read())
+            {
+                response = Convert.ToString(dr["_errorOutput"]);
+            }
+
+            dr.Close();
+            return response;
+        }
         private MySqlDataReader CallEmpDetail_USP(string empDataJson, OperationType operationType)
         {
             MySqlDataReader dr = null;

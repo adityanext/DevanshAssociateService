@@ -20,13 +20,8 @@ namespace DevanshAssociate_API.Services
         }
 
         public string postDailyData(List<DailyData> customerData)
-        {
-            string str = "";
-            foreach(DailyData data in customerData)
-            {
-                str = dailyDataDAL.postDailyDataDAL(data);
-            }
-            return str;
+        {           
+            return dailyDataDAL.postDailyDataDAL(customerData);
         }
 
         public string postExcelRawData(List<DailyData> customerData)

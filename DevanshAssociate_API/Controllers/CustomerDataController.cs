@@ -24,12 +24,18 @@ namespace DevanshAssociate_API.Controllers
             customerService = new CustomerDataService();
         }
 
-        [HttpGet("all")]        
+        [HttpGet("all")]
         public string GetAll(int processStep)
         {
             CustomerData data = new CustomerData();
             data.processStep = processStep;
             return JsonConvert.SerializeObject(customerService.getAllCustomerData(data));
+        }
+
+        [HttpGet("getAll")]
+        public string GetAllWithoutProcessStep()
+        {
+            return JsonConvert.SerializeObject(customerService.getAllWithoutProcessStep());
         }
 
         [HttpGet("getById")]
@@ -40,7 +46,6 @@ namespace DevanshAssociate_API.Controllers
             return JsonConvert.SerializeObject(customerService.getCustomerDataById(custData));
         }
 
-        
         [HttpGet("getReferenceById")]
         public string GetRefernceDataById(int customerId)
         {
@@ -53,14 +58,23 @@ namespace DevanshAssociate_API.Controllers
         public string postCustomerData([FromBody]CustomerData request)
         {
             return JsonConvert.SerializeObject(customerService.postCustomerData(request));
-           
+
         }
-        
+
         [HttpPost("saveRefernceData")]
         public string postCustomerReferenceData([FromBody]CustomerData request)
         {
             return JsonConvert.SerializeObject(customerService.postCustomerReferenceData(request));
 
+        }
+
+        [HttpGet("updateProcessStep")]
+        public string postUpdateProcessStepData(int customerId, int processStep)
+        {
+            CustomerData custData = new CustomerData();
+            custData.customerId = customerId;
+            custData.processStep = processStep;
+            return JsonConvert.SerializeObject(customerService.updateCustormerProcessStepData(custData));
         }
     }
 }

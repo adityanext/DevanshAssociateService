@@ -19,6 +19,11 @@ namespace DevanshAssociate_API.Services
             return empDataDAL.getAllCustomerData();
         }
 
+        public string addEmpData(EmpData emp)
+        {
+            return empDataDAL.addEmpData(emp);
+        }
+
         //public List<EmpData> getAllEmpData()
         //{
         //    throw new NotImplementedException();

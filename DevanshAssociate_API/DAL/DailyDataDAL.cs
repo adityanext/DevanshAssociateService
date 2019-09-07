@@ -30,7 +30,7 @@ namespace DevanshAssociate_API.DAL
 
         }
 
-        public string postDailyDataDAL(DailyData customerData)
+        public string postDailyDataDAL(List<DailyData> customerData)
         {
             string request = JsonConvert.SerializeObject(customerData);
             string response = "";
@@ -124,7 +124,7 @@ namespace DevanshAssociate_API.DAL
             obj.name = Convert.ToString(dr["CustomerName"]);
             obj.primaryContactNumber = Convert.ToString(dr["CustomerPrimaryNumber"]);
             obj.secondaryContactNumber = Convert.ToString(dr["CustomerSecondaryNumber"]);
-            obj.customerReaction = Convert.ToBoolean(dr["CustomerReaction"]);
+            obj.customerReaction = Convert.ToInt32(dr["CustomerReaction"]);
             obj.assignTo = Convert.ToString(dr["AssignTo"]);
             return obj;
         }

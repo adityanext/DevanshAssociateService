@@ -17,7 +17,10 @@ namespace DevanshAssociate_API.Models
         public string buisnessName { get; set; }
 
         //Loan type ID
-        public int loanType { get; set; }
+        public int loan { get; set; }
+
+        //Loan type ID
+        public int otherBankloanType { get; set; }
 
         //Buisness Address
         public string buisnessAddress { get; set; }
@@ -62,7 +65,7 @@ namespace DevanshAssociate_API.Models
         public string bankName { get; set; }
 
         //EMI
-        public int eMI { get; set; }
+        public int otherLoanEmi { get; set; }
 
         //Buisness Proof any registration
         public string buisnessProofAnyRegistration { get; set; }

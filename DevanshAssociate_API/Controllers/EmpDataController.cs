@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DevanshAssociate_API.Models;
 using DevanshAssociate_API.Services;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
@@ -27,6 +28,12 @@ namespace DevanshAssociate_API.Controllers
         public string GetAll()
         {
             return JsonConvert.SerializeObject(customerService.getAllEmpData());
+        }
+
+        [HttpPost("add")]
+        public string addNewEmployee(EmpData emp)
+        {
+            return JsonConvert.SerializeObject(customerService.addEmpData(emp));
         }
     }
 }

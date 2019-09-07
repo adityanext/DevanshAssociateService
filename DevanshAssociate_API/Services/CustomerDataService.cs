@@ -19,6 +19,11 @@ namespace DevanshAssociate_API.Services
             return customerDataDAL.getAllCustomerData(customerData);
         }
 
+        public List<CustomerData> getAllWithoutProcessStep()
+        {
+            return customerDataDAL.getAllCustomerDataWithoutProcessStep();
+        }
+
         public CustomerData getCustomerDataById(CustomerData id)
         {
             return customerDataDAL.getCustomerDataById(id);
@@ -37,6 +42,11 @@ namespace DevanshAssociate_API.Services
         public string postCustomerReferenceData(CustomerData customerData)
         {
             return customerDataDAL.postCustomerRefernceData(customerData);
+        }
+
+        public string updateCustormerProcessStepData(CustomerData customerData)
+        {
+            return customerDataDAL.updateCustormerProcessStep(customerData);
         }
     }
 }
